@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <title>House Finder</title>
+    <style type="text/css">
+      body {
+        font:14px arial;
+        text-align:center;
+      }
+
+      #frame {
+        width:400px;
+      }
+
+      #header {
+        font:16px arial;
+        font-weight:bold;
+        margin-bottom:15px;
+      }
+
+      #left {
+        float:left;
+        width:110px;
+      }
+
+      div.field {
+        margin-bottom:10px;
+        text-align:right;
+      }
+    </style>
+
+    <script type="text/javascript">
+      function validateNumber(value) {
+        // Validate the number
+        // if (!isNumber(value))
+          alert("Por favor entre o Número.");
+      }
+
+      function validateZIPCode() {
+        // Validate the ZIP code
+        // if (!isZIPCode(value))
+          alert("Por favor entre o CEP no Formulário XXXXX.");
+      }
+
+      function calcPrice() {
+        var maxPrice = document.getElementById("income").value * 4;
+        alert("Você pode comprar um casa até o valor de $" + maxPrice + ".");
+      }
+
+      function findHouses(form) {
+        var bedrooms = document.getElementById("bedrooms").value;
+        var zipCode = document.getElementById("zip").value;
+
+        // Display a list of matching houses from the server
+        form.submit();
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="frame">
+      <div id="header">Pronto para Procurar uma Nova Casa ?</div>
+      <div id="left">
+        <img src="house.png" alt="House" />
+      </div>
+      <form name="orderform" action="..." method="POST">
+        <div class="field">Entre sua Renda Anual: 
+          <input id="income" type="text" size="12" onblur="validateNumber(this.value)"/></div>
+        <div class="field">Entre o Número de Quartos: 
+          <input id="bedrooms" type="text" size="6" onblur="validateNumber(this.value)"/></div>
+        <div class="field">Entre o CEP: 
+          <input id="zip" type="text" size="10" onblur="validateZIPCode(this.value)"/></div>
+        <input type="button" value="Calcule O Preço" onclick="calcPrice();" />
+        <input type="button" value="Procurar as Casas" onclick="findHouses(this.form);" />
+      </form>
+    </div>
+  </body>
+</html>

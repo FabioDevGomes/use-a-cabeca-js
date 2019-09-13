@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>IRock</title>
+	</head>
+
+	<body onload="resizeRock(); getUser();" onresize="resizeRock();">
+		<div style="margin-top:100px; text-align:center">
+			<img id="rockImg" src="universe01.jpg" alt="iRock" onclick="touchRock()"/>
+			<input id="clientHeight"/><br>
+			<input id="clientHeightOnly"/>
+		</div>
+
+	<script type="text/javascript" src="cookie.js"></script>
+	<script type="text/javascript">
+		var userName;
+		function touchRock(){
+			if(userName){
+				alert("Locucura total "+ userName +".");
+				document.getElementById("rockImg").src = "universe02.jpg";
+			}else{
+				userName = prompt("Qual o seu nome?", "Entre com seu nome aqui.");
+				alert("Prazer em conhecer você, " + userName + ".");
+				writeCookie("irock_username", userName, 5*365);
+				document.getElementById("rockImg").src = "universe02.jpg";
+			}
+
+		setTimeout("document.getElementById('rockImg').src = 'universe01.jpg';", 3500);
+		}
+
+		function resizeRock(){
+			document.getElementById('rockImg').style.height = (document.body.clientHeight - 100) * 0.9;
+			document.getElementById('clientHeight').value = (document.body.clientHeight - 100)* 0.9;
+			document.getElementById('clientHeightOnly').value = document.body.clientHeight;
+		}
+
+		function getUser(){
+			userName = readCookie("irock_username");
+			if(userName)
+				alert("Olá " +  userName + ", senti sua falta.");
+			else
+				alert("Olá, eu sou a rocha de estimação.");
+		}
+
+
+	</script>
+	</body>
+</html>
